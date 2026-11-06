@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mcp-contract-auditor"
+version = "1.0.0"
+description = "Offline MCP declaration diffs and exact audit acknowledgements"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+dependencies = []
+
+[project.scripts]
+mcp-contract-auditor = "mcp_auditor.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["mcp_auditor*"]

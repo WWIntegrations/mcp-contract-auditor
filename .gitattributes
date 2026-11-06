@@ -1,0 +1,2 @@
+# Preserve the upstream font license's original line-end spaces.
+docs/fonts/anton/OFL.txt whitespace=-blank-at-eol

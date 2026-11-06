@@ -1,0 +1,525 @@
+{
+  "source_sha256": "b8bdf9ce700cd9fc188ba69f69a69ac07530b7866ca77f1cc28afdf3161aafa2",
+  "actions": [
+    {
+      "action": "Start artwork",
+      "at_ms": 3818.3000000044703,
+      "meta": {
+        "ready": true,
+        "step": 0,
+        "stepCount": 8,
+        "state": "intro",
+        "introMs": 8000,
+        "holdMs": 2400,
+        "durationMs": 24000,
+        "motionMs": 633.2999999999997,
+        "motionPaused": false,
+        "reducedMotion": false,
+        "playing": true,
+        "decorativeScroll": 0,
+        "holdProgress": 0,
+        "renderer": "WebGL",
+        "artworkError": null,
+        "graphics": {
+          "renderer": "WebGL",
+          "transmission": 0.95,
+          "materialMode": "glass",
+          "triangles": 13324,
+          "tileCount": 112,
+          "lod": "desktop",
+          "geometryLod": "desktop",
+          "composition": "desktop",
+          "pixelRatio": 1
+        },
+        "findingCount": 5,
+        "displayedFindingRules": [
+          "inventory_change",
+          "untrusted_text_change",
+          "contract_breakage",
+          "opaque_schema",
+          "declared_capability_expansion"
+        ],
+        "receiptValid": true,
+        "staleReceiptValid": false,
+        "auditDigest": "0a5ef0817c5a914143e87183aef269219bf844e66bf670fef0c4a6873b488125"
+      }
+    },
+    {
+      "action": "Actual hold opens decorative scene",
+      "at_ms": 14968.30000000447,
+      "meta": {
+        "ready": true,
+        "step": 0,
+        "stepCount": 8,
+        "state": "open",
+        "introMs": 8000,
+        "holdMs": 2400,
+        "durationMs": 24000,
+        "motionMs": 11666.199999999999,
+        "motionPaused": false,
+        "reducedMotion": false,
+        "playing": true,
+        "decorativeScroll": 0,
+        "holdProgress": 1,
+        "renderer": "WebGL",
+        "artworkError": null,
+        "graphics": {
+          "renderer": "WebGL",
+          "transmission": 0.95,
+          "materialMode": "glass",
+          "triangles": 7308,
+          "tileCount": 112,
+          "lod": "desktop",
+          "geometryLod": "desktop",
+          "composition": "desktop",
+          "pixelRatio": 1
+        },
+        "findingCount": 5,
+        "displayedFindingRules": [
+          "inventory_change",
+          "untrusted_text_change",
+          "contract_breakage",
+          "opaque_schema",
+          "declared_capability_expansion"
+        ],
+        "receiptValid": true,
+        "staleReceiptValid": false,
+        "auditDigest": "0a5ef0817c5a914143e87183aef269219bf844e66bf670fef0c4a6873b488125"
+      }
+    },
+    {
+      "action": "Scroll800 artwork",
+      "at_ms": 18912.89999999851,
+      "meta": {
+        "ready": true,
+        "step": 0,
+        "stepCount": 8,
+        "state": "open",
+        "introMs": 8000,
+        "holdMs": 2400,
+        "durationMs": 24000,
+        "motionMs": 15499.399999999998,
+        "motionPaused": false,
+        "reducedMotion": false,
+        "playing": true,
+        "decorativeScroll": 800,
+        "holdProgress": 1,
+        "renderer": "WebGL",
+        "artworkError": null,
+        "graphics": {
+          "renderer": "WebGL",
+          "transmission": 0.95,
+          "materialMode": "glass",
+          "triangles": 7308,
+          "tileCount": 112,
+          "lod": "desktop",
+          "geometryLod": "desktop",
+          "composition": "desktop",
+          "pixelRatio": 1
+        },
+        "findingCount": 5,
+        "displayedFindingRules": [
+          "inventory_change",
+          "untrusted_text_change",
+          "contract_breakage",
+          "opaque_schema",
+          "declared_capability_expansion"
+        ],
+        "receiptValid": true,
+        "staleReceiptValid": false,
+        "auditDigest": "0a5ef0817c5a914143e87183aef269219bf844e66bf670fef0c4a6873b488125"
+      }
+    },
+    {
+      "action": "Scroll1600 artwork",
+      "at_ms": 20631.10000000149,
+      "meta": {
+        "ready": true,
+        "step": 0,
+        "stepCount": 8,
+        "state": "open",
+        "introMs": 8000,
+        "holdMs": 2400,
+        "durationMs": 24000,
+        "motionMs": 17466,
+        "motionPaused": false,
+        "reducedMotion": false,
+        "playing": true,
+        "decorativeScroll": 1600,
+        "holdProgress": 1,
+        "renderer": "WebGL",
+        "artworkError": null,
+        "graphics": {
+          "renderer": "WebGL",
+          "transmission": 0.95,
+          "materialMode": "glass",
+          "triangles": 7308,
+          "tileCount": 112,
+          "lod": "desktop",
+          "geometryLod": "desktop",
+          "composition": "desktop",
+          "pixelRatio": 1
+        },
+        "findingCount": 5,
+        "displayedFindingRules": [
+          "inventory_change",
+          "untrusted_text_change",
+          "contract_breakage",
+          "opaque_schema",
+          "declared_capability_expansion"
+        ],
+        "receiptValid": true,
+        "staleReceiptValid": false,
+        "auditDigest": "0a5ef0817c5a914143e87183aef269219bf844e66bf670fef0c4a6873b488125"
+      }
+    },
+    {
+      "action": "Two actual fixture captures with two pages each",
+      "at_ms": 23651.20000000298,
+      "meta": {
+        "ready": true,
+        "step": 0,
+        "stepCount": 8,
+        "state": "open",
+        "introMs": 8000,
+        "holdMs": 2400,
+        "durationMs": 24000,
+        "motionMs": 20415.899999999998,
+        "motionPaused": false,
+        "reducedMotion": false,
+        "playing": true,
+        "decorativeScroll": 1600,
+        "holdProgress": 1,
+        "renderer": "WebGL",
+        "artworkError": null,
+        "graphics": {
+          "renderer": "WebGL",
+          "transmission": 0.95,
+          "materialMode": "glass",
+          "triangles": 7308,
+          "tileCount": 112,
+          "lod": "desktop",
+          "geometryLod": "desktop",
+          "composition": "desktop",
+          "pixelRatio": 1
+        },
+        "findingCount": 5,
+        "displayedFindingRules": [
+          "inventory_change",
+          "untrusted_text_change",
+          "contract_breakage",
+          "opaque_schema",
+          "declared_capability_expansion"
+        ],
+        "receiptValid": true,
+        "staleReceiptValid": false,
+        "auditDigest": "0a5ef0817c5a914143e87183aef269219bf844e66bf670fef0c4a6873b488125"
+      }
+    },
+    {
+      "action": "Input required narrows",
+      "at_ms": 26283.60000000149,
+      "meta": {
+        "ready": true,
+        "step": 2,
+        "stepCount": 8,
+        "state": "open",
+        "introMs": 8000,
+        "holdMs": 2400,
+        "durationMs": 24000,
+        "motionMs": 22882.5,
+        "motionPaused": false,
+        "reducedMotion": false,
+        "playing": true,
+        "decorativeScroll": 1600,
+        "holdProgress": 1,
+        "renderer": "WebGL",
+        "artworkError": null,
+        "graphics": {
+          "renderer": "WebGL",
+          "transmission": 0.95,
+          "materialMode": "glass",
+          "triangles": 7308,
+          "tileCount": 112,
+          "lod": "desktop",
+          "geometryLod": "desktop",
+          "composition": "desktop",
+          "pixelRatio": 1
+        },
+        "findingCount": 1,
+        "displayedFindingRules": [
+          "contract_breakage"
+        ],
+        "receiptValid": true,
+        "staleReceiptValid": false,
+        "auditDigest": "0a5ef0817c5a914143e87183aef269219bf844e66bf670fef0c4a6873b488125"
+      }
+    },
+    {
+      "action": "Changed description stays data",
+      "at_ms": 28467,
+      "meta": {
+        "ready": true,
+        "step": 3,
+        "stepCount": 8,
+        "state": "open",
+        "introMs": 8000,
+        "holdMs": 2400,
+        "durationMs": 24000,
+        "motionMs": 25199,
+        "motionPaused": false,
+        "reducedMotion": false,
+        "playing": true,
+        "decorativeScroll": 1600,
+        "holdProgress": 1,
+        "renderer": "WebGL",
+        "artworkError": null,
+        "graphics": {
+          "renderer": "WebGL",
+          "transmission": 0.95,
+          "materialMode": "glass",
+          "triangles": 7308,
+          "tileCount": 112,
+          "lod": "desktop",
+          "geometryLod": "desktop",
+          "composition": "desktop",
+          "pixelRatio": 1
+        },
+        "findingCount": 1,
+        "displayedFindingRules": [
+          "untrusted_text_change"
+        ],
+        "receiptValid": true,
+        "staleReceiptValid": false,
+        "auditDigest": "0a5ef0817c5a914143e87183aef269219bf844e66bf670fef0c4a6873b488125"
+      }
+    },
+    {
+      "action": "Declared readOnly hint expands",
+      "at_ms": 30430.80000000447,
+      "meta": {
+        "ready": true,
+        "step": 4,
+        "stepCount": 8,
+        "state": "open",
+        "introMs": 8000,
+        "holdMs": 2400,
+        "durationMs": 24000,
+        "motionMs": 27082.3,
+        "motionPaused": false,
+        "reducedMotion": false,
+        "playing": true,
+        "decorativeScroll": 1600,
+        "holdProgress": 1,
+        "renderer": "WebGL",
+        "artworkError": null,
+        "graphics": {
+          "renderer": "WebGL",
+          "transmission": 0.95,
+          "materialMode": "glass",
+          "triangles": 7308,
+          "tileCount": 112,
+          "lod": "desktop",
+          "geometryLod": "desktop",
+          "composition": "desktop",
+          "pixelRatio": 1
+        },
+        "findingCount": 1,
+        "displayedFindingRules": [
+          "declared_capability_expansion"
+        ],
+        "receiptValid": true,
+        "staleReceiptValid": false,
+        "auditDigest": "0a5ef0817c5a914143e87183aef269219bf844e66bf670fef0c4a6873b488125"
+      }
+    },
+    {
+      "action": "Unsupported schema remains unknown",
+      "at_ms": 32649.39999999851,
+      "meta": {
+        "ready": true,
+        "step": 5,
+        "stepCount": 8,
+        "state": "open",
+        "introMs": 8000,
+        "holdMs": 2400,
+        "durationMs": 24000,
+        "motionMs": 29248.8,
+        "motionPaused": false,
+        "reducedMotion": false,
+        "playing": true,
+        "decorativeScroll": 1600,
+        "holdProgress": 1,
+        "renderer": "WebGL",
+        "artworkError": null,
+        "graphics": {
+          "renderer": "WebGL",
+          "transmission": 0.95,
+          "materialMode": "glass",
+          "triangles": 7308,
+          "tileCount": 112,
+          "lod": "desktop",
+          "geometryLod": "desktop",
+          "composition": "desktop",
+          "pixelRatio": 1
+        },
+        "findingCount": 1,
+        "displayedFindingRules": [
+          "opaque_schema"
+        ],
+        "receiptValid": true,
+        "staleReceiptValid": false,
+        "auditDigest": "0a5ef0817c5a914143e87183aef269219bf844e66bf670fef0c4a6873b488125"
+      }
+    },
+    {
+      "action": "Recorded exact receipt matches",
+      "at_ms": 34767.39999999851,
+      "meta": {
+        "ready": true,
+        "step": 6,
+        "stepCount": 8,
+        "state": "open",
+        "introMs": 8000,
+        "holdMs": 2400,
+        "durationMs": 24000,
+        "motionMs": 31365.399999999998,
+        "motionPaused": false,
+        "reducedMotion": false,
+        "playing": true,
+        "decorativeScroll": 1600,
+        "holdProgress": 1,
+        "renderer": "WebGL",
+        "artworkError": null,
+        "graphics": {
+          "renderer": "WebGL",
+          "transmission": 0.95,
+          "materialMode": "glass",
+          "triangles": 7308,
+          "tileCount": 112,
+          "lod": "desktop",
+          "geometryLod": "desktop",
+          "composition": "desktop",
+          "pixelRatio": 1
+        },
+        "findingCount": 5,
+        "displayedFindingRules": [
+          "inventory_change",
+          "untrusted_text_change",
+          "contract_breakage",
+          "opaque_schema",
+          "declared_capability_expansion"
+        ],
+        "receiptValid": true,
+        "staleReceiptValid": false,
+        "auditDigest": "0a5ef0817c5a914143e87183aef269219bf844e66bf670fef0c4a6873b488125"
+      }
+    },
+    {
+      "action": "Changed candidate invalidates old receipt",
+      "at_ms": 37182.10000000149,
+      "meta": {
+        "ready": true,
+        "step": 7,
+        "stepCount": 8,
+        "state": "open",
+        "introMs": 8000,
+        "holdMs": 2400,
+        "durationMs": 24000,
+        "motionMs": 33848.700000000004,
+        "motionPaused": false,
+        "reducedMotion": false,
+        "playing": true,
+        "decorativeScroll": 1600,
+        "holdProgress": 1,
+        "renderer": "WebGL",
+        "artworkError": null,
+        "graphics": {
+          "renderer": "WebGL",
+          "transmission": 0.95,
+          "materialMode": "glass",
+          "triangles": 7308,
+          "tileCount": 112,
+          "lod": "desktop",
+          "geometryLod": "desktop",
+          "composition": "desktop",
+          "pixelRatio": 1
+        },
+        "findingCount": 1,
+        "displayedFindingRules": [
+          "untrusted_text_change"
+        ],
+        "receiptValid": true,
+        "staleReceiptValid": false,
+        "auditDigest": "0a5ef0817c5a914143e87183aef269219bf844e66bf670fef0c4a6873b488125"
+      }
+    },
+    {
+      "action": "Return to artwork",
+      "at_ms": 39395.80000000447,
+      "meta": {
+        "ready": true,
+        "step": 7,
+        "stepCount": 8,
+        "state": "open",
+        "introMs": 8000,
+        "holdMs": 2400,
+        "durationMs": 24000,
+        "motionMs": 36081.9,
+        "motionPaused": false,
+        "reducedMotion": false,
+        "playing": true,
+        "decorativeScroll": 0,
+        "holdProgress": 1,
+        "renderer": "WebGL",
+        "artworkError": null,
+        "graphics": {
+          "renderer": "WebGL",
+          "transmission": 0.95,
+          "materialMode": "glass",
+          "triangles": 7308,
+          "tileCount": 112,
+          "lod": "desktop",
+          "geometryLod": "desktop",
+          "composition": "desktop",
+          "pixelRatio": 1
+        },
+        "findingCount": 1,
+        "displayedFindingRules": [
+          "untrusted_text_change"
+        ],
+        "receiptValid": true,
+        "staleReceiptValid": false,
+        "auditDigest": "0a5ef0817c5a914143e87183aef269219bf844e66bf670fef0c4a6873b488125"
+      }
+    }
+  ],
+  "errors": [],
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "width": 1440,
+        "height": 900,
+        "r_frame_rate": "25/1",
+        "nb_frames": "1007"
+      }
+    ],
+    "format": {
+      "duration": "40.280000"
+    }
+  },
+  "capture": "Actual UI interactions over a recorded synthetic tools/list capture. Opening artwork does not execute tools or acknowledge an audit.",
+  "published_html_sha256": "b8bdf9ce700cd9fc188ba69f69a69ac07530b7866ca77f1cc28afdf3161aafa2",
+  "media": {
+    "showcase.mp4": {
+      "bytes": 3564455,
+      "sha256": "3be2b9a89c4ad8c3880f2ef1c962bae3ad76e88f182f31aabad68ae9a5ab5201"
+    },
+    "showcase.gif": {
+      "bytes": 11640878,
+      "sha256": "d581560db769356e1c66bb0701828545a3e4c45b6101a182f6450af5f9b21937"
+    }
+  }
+}

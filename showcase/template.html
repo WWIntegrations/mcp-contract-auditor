@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Inspect a real local MCP tools/list capture, contract changes and an unsigned digest receipt. No tool execution.">
+<title>Contract Lab | MCP contract auditor</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23000'/%3E%3Cpath d='M25 13H15v38h10m14-38h10v38H39' fill='none' stroke='%23d790f1' stroke-width='6'/%3E%3C/svg%3E">
+<style>/*__STYLE__*/</style>
+</head>
+<body>
+<a class="skip-link" href="#inspection">Skip to inspection</a>
+<header class="header">
+<a class="wordmark" href="#top" aria-label="Contract Lab home"><span aria-hidden="true">[ : ]</span> Contract <i>Lab</i></a>
+<nav aria-label="Main navigation"><a href="#transcript">[TRANSCRIPT]</a><a href="#diff">[DIFF]</a><a href="#receipt">[RECEIPT]</a></nav>
+</header>
+<main id="top">
+<section class="experience" aria-label="Contract Lab interactive artwork">
+<div class="scene-stage">
+<h1 class="sr-only">CONTRACT LAB</h1>
+<canvas id="scene-canvas" aria-hidden="true"></canvas>
+<div id="art-fallback" hidden>
+<div class="fallback-heading" aria-hidden="true">CONTRACT LAB</div>
+<svg viewBox="0 0 600 700" role="img" aria-label="Two contract layers connected by curved paths. Static artwork."><defs><linearGradient id="fallback-glass"><stop stop-color="#e7b2ff"/><stop offset=".5" stop-color="#bddcf9"/><stop offset="1" stop-color="#986ab7"/></linearGradient></defs><g fill="none" stroke="url(#fallback-glass)"><path d="M145 280C110 60 490 60 455 280L410 280C430 130 170 130 190 280Z" stroke-width="18"/><path d="M170 280C70 390 420 470 230 630M210 280C380 420 90 510 280 665M390 280C470 430 200 550 360 650M430 280C250 380 500 440 310 640" stroke-width="8"/></g></svg>
+<p id="fallback-note">Static artwork. All inspection data remains available.</p>
+</div>
+<div class="entry" id="entry-controls"><p>READ WHAT CHANGED.</p><button id="start-view" class="orb" disabled>START</button><small>Local fixture. Real capture. No tool execution.</small></div>
+<button id="hold-open" class="orb hold" hidden disabled aria-describedby="hold-help">HOLD TO<br>OPEN</button>
+<div id="hold-help" class="hold-progress" hidden><div><span>OPEN THE CONTRACT</span><span>HOLD TO EXPLORE</span></div><progress id="hold-progress" max="1" value="0" aria-label="Artwork opening gesture"></progress></div>
+<button id="skip-intro" class="skip-intro" disabled>Open inspection without animation</button>
+<div id="scene-open-copy" class="scene-copy" hidden><span class="contract-symbol" aria-hidden="true">[ : ]</span><p>DECLARATIONS CHANGE.<br>KEEP THE DIFFERENCE VISIBLE.</p><a href="#inspection">Explore the recorded audit ↓</a></div>
+<div class="side-label" aria-hidden="true"><span>+</span><span>JSON</span><span>+</span><span>DIFF</span><span>+</span><span>HASH</span><span>+</span></div>
+<div class="scene-ruler" aria-hidden="true"></div>
+<div class="scene-settings" aria-label="Artwork controls">
+<button id="motion-toggle" aria-pressed="false" disabled><span aria-hidden="true">∿∿∿</span> PAUSE MOTION</button>
+<div class="material-panel"><div class="swatches"><button data-color="violet" aria-label="Violet artwork" aria-pressed="false"></button><button data-color="blue" aria-label="Blue artwork" aria-pressed="false"></button><button data-color="scroll" aria-label="Scroll-linked artwork color" aria-pressed="true"></button><button id="material-toggle" aria-label="Wireframe artwork" aria-pressed="false">◇</button></div><small>ARTWORK ONLY</small></div>
+</div>
+</div>
+</section>
+<section id="inspection" class="inspection section">
+<div class="section-heading"><p class="eyebrow">LOCAL / SYNTHETIC FIXTURE</p><h2>THE CHANGE<br>IS THE POINT.</h2><p class="lede">A recorded <code>tools/list</code> exchange, two contract snapshots, and an audit you can inspect. Nothing here executes a declared tool.</p></div>
+<div class="step-controls"><button id="previous-step" aria-label="Previous recorded step" disabled>←</button><label for="step-select">Recorded step<select id="step-select" disabled></select></label><button id="next-step" aria-label="Next recorded step" disabled>→</button></div>
+<div class="step-caption"><span id="step-number"></span><h3 id="step-label"></h3><p id="step-description"></p></div>
+<dl class="context"><div><dt>Origin / scope</dt><dd id="context-label"></dd></div><div><dt>Protocol profile</dt><dd id="protocol-profile"></dd></div><div><dt>Ruleset</dt><dd id="ruleset"></dd></div><div><dt>Tools baseline / candidate</dt><dd id="tool-count"></dd></div></dl>
+<p class="limit">Origin and scope are operator labels, not server identity. Findings describe declarations, not actual implementation behavior.</p>
+</section>
+<section id="transcript" class="section transcript-section">
+<div class="section-title"><span>01</span><h2>THE CAPTURE.</h2></div>
+<p>Two local fixture processes. Only <code>tools/list</code>, over stdio. This page displays the captured result; it does not launch a process.</p>
+<div class="transcript-columns"><article><h3>BASELINE</h3><div id="baseline-trace" class="trace"></div><details><summary>Full baseline transcript</summary><pre id="baseline-transcript"></pre></details></article><article><h3>CANDIDATE</h3><div id="candidate-trace" class="trace"></div><details><summary>Full candidate transcript</summary><pre id="candidate-transcript"></pre></details></article></div>
+<details><summary>Contract snapshots and digests</summary><div class="snapshot-columns"><article><h3>Baseline snapshot</h3><p id="baseline-digest" class="digest"></p><pre id="baseline-snapshot"></pre></article><article><h3>Candidate snapshot</h3><p id="candidate-digest" class="digest"></p><pre id="candidate-snapshot"></pre></article></div></details>
+</section>
+<section id="diff" class="section diff-section">
+<div class="section-title"><span>02</span><h2>INSPECT THE GAP.</h2></div>
+<div class="filters"><label>Tool<select id="tool-select" disabled></select></label><label>Finding severity<select id="severity-select" disabled><option value="*">All severities</option><option value="high">High</option><option value="review">Review</option><option value="unknown">Unknown</option><option value="info">Info</option></select></label><button id="reset-filters" disabled>Reset filters</button></div>
+<p id="filter-count" aria-live="polite"></p>
+<div id="finding-list" class="finding-list"></div>
+<h3 class="subheading">DECLARED SCHEMA RELATIONS</h3>
+<div id="relation-list" class="relation-list"></div>
+<h3 class="subheading">ANALYSIS COVERAGE</h3>
+<div id="coverage" class="coverage"></div>
+<p class="limit">Unknown is not low risk. Unsupported schema is retained without pretending to analyze it. Hints are declarations, not permissions.</p>
+<h3 class="subheading">EXACT STRUCTURAL CHANGES</h3>
+<div id="change-list" class="change-list"></div>
+</section>
+<section id="receipt" class="section receipt-section">
+<div class="section-title"><span>03</span><h2>BOUND TO<br>THIS DIGEST.</h2></div>
+<p>The fixture created an unsigned local acknowledgement. Opening this scene or selecting a step never approves an audit.</p>
+<div class="receipt-layout"><div><p class="eyebrow">RECORDED CHECK</p><h3 id="receipt-status"></h3><p id="receipt-description"></p><label class="check-select">Inspect a recorded check<select id="receipt-check" disabled><option value="current">Original candidate</option><option value="stale">Candidate changed afterwards</option></select></label><p id="receipt-reviewer"></p><p class="limit">No authentication or signature. Acknowledgement is not authorization or a safety guarantee. High and unknown findings remain.</p></div><div><label for="receipt-digest">Audit digest</label><p id="receipt-digest" class="digest"></p><details><summary>Recorded receipt JSON</summary><pre id="receipt-json"></pre></details></div></div>
+</section>
+<section id="export" class="section export-section">
+<div class="section-title"><span>04</span><h2>TAKE THE EVIDENCE.</h2></div>
+<div class="export-controls"><label>Original artifact<select id="export-kind" disabled><option value="report">Audit report</option><option value="baseline_transcript">Baseline transcript</option><option value="candidate_transcript">Candidate transcript</option><option value="baseline_snapshot">Baseline snapshot</option><option value="candidate_snapshot">Candidate snapshot</option><option value="receipt">Acknowledgement receipt</option><option value="demo">Full demonstration</option></select></label><button id="export-artifact" disabled>DOWNLOAD JSON ↗</button></div>
+<p id="export-status" aria-live="polite"></p>
+<p class="limit">Exports preserve the original core serializer text. This viewer supports its bundled synthetic demonstration; it does not import arbitrary CLI artifacts or verify their provenance.</p>
+<details class="architecture"><summary>How the local auditor works</summary><!--__DIAGRAM__--></details>
+<details><summary>Visual reference, limits and licenses</summary><p>The composition studies <a href="https://labs.noomoagency.com/">Noomo Labs</a>. The glass contract model, lighting and raster are original. Anton and Departure Mono are OFL substitutes for the reference typography. The easing and mobile composition are adaptations; full visual equivalence has not been established. Artwork colors and tile counts carry no audit meaning.</p><p>Three.js 0.187.0, MIT. esbuild 0.28.2, MIT, build tool. Full license texts are embedded in this document.</p><button id="export-licenses">Download licenses</button></details>
+</section>
+</main>
+<footer><span>CONTRACT LAB / LOCAL MCP DECLARATIONS</span><a href="https://wiktorwojtarowicz.pl">Made by WW</a></footer>
+<noscript><p class="noscript">JavaScript is required for the interactive inspector. Run the local CLI demo to inspect its original artifacts.</p></noscript>
+<script type="application/json" id="showcase-data">__DATA__</script>
+<script type="application/json" id="showcase-artifacts">__ARTIFACTS__</script>
+<script type="application/json" id="font-license">__LICENSES__</script>
+<script>/*__SCRIPT__*/</script>
+</body>
+</html>
