@@ -14,7 +14,7 @@ class CLITests(unittest.TestCase):
     def call(self, args):
         output, error = (io.StringIO(), io.StringIO())
         with contextlib.redirect_stdout(output), contextlib.redirect_stderr(error):
-            code = main(args)
+            code = main([args[0], '--json', *args[1:]])
         return (code, output.getvalue(), error.getvalue())
 
     def test_complete_flow_and_exit_codes(self):
