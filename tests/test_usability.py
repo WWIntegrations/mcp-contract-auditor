@@ -71,7 +71,7 @@ class UsabilityTests(unittest.TestCase):
             self.assertEqual(call(['check-receipt', b, b, r])[0], 1)
 
     def test_terminal_control_characters_are_escaped(self):
-        evil = '\x1b]8;;http://evil\x1b\\X‮\r\n⁦'
+        evil = '\x1b]8;;http://evil\x1b\\X\u202e\r\n\u2066'
         escaped = summary.safe(evil)
         self.assertIn('\\x1b', escaped)
         self.assertIn('\\u202e', escaped)
