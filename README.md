@@ -4,6 +4,7 @@
   <source media="(prefers-color-scheme: dark)" srcset="docs/how-it-works-dark.svg">
   <img src="docs/how-it-works-light.svg" alt="Two recorded tools/list transcripts of an MCP server, before and after an update, are compared tool by tool. Each change is classified as breaking callers or needing human review. A named operator can acknowledge one exact audit digest. No tool is ever called." width="100%">
 </picture>
+<p align="center"><a href="docs/system-map.md">Full system map: 7 diagrams</a></p>
 
 Use it when you have two recorded `tools/list` transcripts of an MCP server (before and after an update) and need to know which tool contracts changed, which changes break callers, and which need a human review. It compares declarations and can record that a named operator acknowledged one exact audit digest. It never calls a tool or starts an arbitrary server.
 
