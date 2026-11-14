@@ -124,7 +124,7 @@ Only flat objects with typed scalar properties, required sets, scalar enums, add
 
 Numbers retain an exact Decimal value and an input lexeme. Canonical hash bytes expand decimal exponents without using the Decimal context precision. The separate artifact writer emits legal, unquoted numeric tokens and preserves exact values, including `123e308` and long coefficients. It never converts Decimal to float or string-valued JSON. Different numeric spellings can have the same digest.
 
-The parser rejects duplicate keys, invalid UTF-8, BOM, nonfinite numbers, lone surrogates, trailing data, excessive depth/nodes and out-of-profile numeric tokens. Ordinary input files are opened once with size bounds; symlinks, devices and FIFOs are refused. Artifact JSON visibly escapes control and bidi characters without changing their decoded value or canonical digest.
+The parser rejects duplicate keys, invalid UTF-8, BOM, nonfinite numbers, lone surrogates, trailing data, excessive depth/nodes and out-of-profile numeric tokens. Ordinary input files are opened once with size bounds; symlinks, devices and FIFOs are refused. Artifact JSON visibly escapes control and bidi characters, and invisible format characters (zero-width, BOM, soft hyphen, line separators, Unicode tag characters that can spell hidden text), without changing their decoded value or canonical digest.
 
 | Boundary | Limit |
 | --- | --- |

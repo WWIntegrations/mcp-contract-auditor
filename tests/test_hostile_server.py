@@ -10,7 +10,7 @@ import unittest
 from mcp_auditor.audit import audit
 from mcp_auditor.cli import main
 from mcp_auditor.demo import _capture, Clock
-from mcp_auditor.strict_json import artifact_json, parse_json, AuditError
+from mcp_auditor.strict_json import artifact_json, parse_json, digest, AuditError
 from mcp_auditor.snapshot import import_transcript
 from test_protocol import transcript, tool
 
@@ -82,6 +82,23 @@ class HostileServerTests(unittest.TestCase):
                     if extra == ['--json']:
                         report = parse_json(raw.getvalue())
                         self.assertIn('Zażółć', report['changes'][0]['after']['value'])
+
+    def test_invisible_format_characters_are_visible_in_artifacts(self):
+        # Unicode tag characters (U+E0000 block) spell hidden ASCII; zero-width
+        # and BOM characters hide text. A reviewer reading the artifact must see them.
+        hidden = ''.join(chr(0xE0000 + ord(c)) for c in 'IGNORE')
+        description = 'Search docs.' + hidden + '​⁠﻿­ end'
+        item = tool('lookup')
+        item['description'] = description
+        value = import_transcript(artifact_json(transcript([item])))
+        encoded = artifact_json(value)
+        for character in hidden + '​⁠﻿­ ':
+            self.assertNotIn(character.encode('utf-8'), encoded)
+        self.assertIn(b'\\udb40\\udc49', encoded)
+        self.assertIn(b'\\u200b', encoded)
+        decoded = parse_json(encoded)
+        self.assertEqual(decoded['tools'][0]['description'], description)
+        self.assertEqual(digest(decoded), digest(value))
 
 
 if __name__ == '__main__':

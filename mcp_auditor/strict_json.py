@@ -24,6 +24,23 @@ class Number:
     def __hash__(self):
         return hash(self.value)
 
+def _escape(code):
+    if code < 0x10000:
+        return '\\u%04x' % code
+    code -= 0x10000
+    return '\\u%04x\\u%04x' % (0xD800 + (code >> 10), 0xDC00 + (code & 0x3FF))
+
+# Artifact display escapes, a fixed list (independent of the Unicode database version):
+# DEL and C1 controls, bidi marks and overrides, zero-width and other invisible format
+# characters, line/paragraph separators, BOM, interlinear annotations and tag characters.
+ARTIFACT_ESCAPES = {
+    code: _escape(code)
+    for code in (
+        *range(127, 160), 0x00AD, 0x061C, 0x180E, *range(0x200B, 0x2010), *range(0x2028, 0x202F),
+        *range(0x2060, 0x2070), 0xFEFF, *range(0xFFF9, 0xFFFC), *range(0xE0000, 0xE0080),
+    )
+}
+
 def fail(code='invalid_json'):
     raise AuditError(code)
 
@@ -181,9 +198,7 @@ def _encode(value, artifact):
             fail('invalid_unicode')
         encoded = json.dumps(value, ensure_ascii=False)
         if artifact:
-            controls = list(range(127, 160)) + [0x061C, 0x200E, 0x200F]
-            controls += list(range(0x202A, 0x202F)) + list(range(0x2066, 0x206A))
-            encoded = encoded.translate({code: '\\u%04x' % code for code in controls})
+            encoded = encoded.translate(ARTIFACT_ESCAPES)
         return encoded
     if isinstance(value, Number):
         return decimal_artifact(value) if artifact else decimal_plain(value.value)
