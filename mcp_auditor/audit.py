@@ -73,11 +73,14 @@ def audit(old, new):
     findings = []
     relations = []
     coverage = {side: dict(supported=0, unsupported=0, not_declared=0) for side in ('input', 'output')}
+    seen = set()
 
     def finding(rule, severity, tool, pointer, reason):
-        item = dict(rule_id=rule, severity=severity, tool=tool, pointer=pointer, reason_code=reason)
-        if item not in findings:
-            findings.append(item)
+        # A set, not a list scan: a hostile catalog can yield tens of thousands of findings.
+        key = (rule, severity, tool, pointer, reason)
+        if key not in seen:
+            seen.add(key)
+            findings.append(dict(rule_id=rule, severity=severity, tool=tool, pointer=pointer, reason_code=reason))
     for name in sorted(before.keys() | after.keys()):
         left, right = (before.get(name), after.get(name))
         tool_changes = structural(left, right, old_present=name in before, new_present=name in after)
