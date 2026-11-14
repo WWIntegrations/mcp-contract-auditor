@@ -34,7 +34,7 @@ Findings:
 Audit digest 0a5ef0817c5a914143e87183aef269219bf844e66bf670fef0c4a6873b488125
 ```
 
-`demo` runs the same comparison from two real fixture processes and adds a receipt check. Every command prints a short summary; `--json` prints the full machine-readable artifact. `compare` exits 0 after printing; add `--strict` to exit 1 when changes need review (a CI gate).
+`demo` runs the same comparison from two real fixture processes and adds a receipt check. Every command prints a short summary; `--json` prints the full machine-readable artifact. `compare` exits 0 after printing; add `--strict` for the exit codes of `diff` (a CI gate): 1 for any contract change or any high, review or unknown finding, so an unsupported schema fails the gate even when nothing changed.
 
 ## Your own data
 
@@ -139,7 +139,7 @@ The parser rejects duplicate keys, invalid UTF-8, BOM, nonfinite numbers, lone s
 | Numeric token / explicit exponent | 64 characters / absolute value at most 308 |
 | Response / capture window | 3 seconds / 15 seconds, monotonic |
 
-After the final page the client closes stdin, drains both streams, requires exit 0 and rejects extra messages. Cleanup grace is at most one second before terminating the owned process.
+After the final page the client closes stdin, drains both streams, requires exit 0 and rejects extra messages. Its exit grace is at most one second, still inside the capture window, before the owned process is terminated.
 
 `import` and `confirm` return 0 on success, 2 on error. `diff` returns 0 only for an identical contract without high/review/unknown findings, 1 for a change or review requirement, 2 for an input/integrity error. `check-receipt` returns 0 for an exact match, 1 for a mismatch, 2 for invalid input or an operational error. Output is fully built and checked before stdout emission; errors use diagnostic codes on stderr.
 

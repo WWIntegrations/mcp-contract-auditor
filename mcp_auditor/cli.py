@@ -35,7 +35,7 @@ def main(argv=None):
     comparer = commands.add_parser('compare', help='import two transcripts in memory and diff them; exit 0 unless --strict')
     comparer.add_argument('baseline_transcript')
     comparer.add_argument('candidate_transcript')
-    comparer.add_argument('--strict', action='store_true', help='exit 1 when changes need review, like diff')
+    comparer.add_argument('--strict', action='store_true', help='exit 1 on any contract change or high/review/unknown finding, like diff')
     for name in ('diff', 'confirm', 'check-receipt'):
         command = commands.add_parser(name)
         command.add_argument('baseline')
