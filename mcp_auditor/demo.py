@@ -125,7 +125,8 @@ def _capture(process, clock, *, response_seconds=3, collection_seconds=15, start
                     else:
                         finished = True
                         process.stdin.close()
-                        deadline = clock.monotonic() + 1
+                        # Exit grace of at most 1 s, still inside the whole capture window.
+                        deadline = min(collection_deadline, clock.monotonic() + 1)
                 if len(buffer) >= 1024 * 1024:
                     fail('line_limit')
         try:

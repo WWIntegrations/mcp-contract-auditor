@@ -6,7 +6,7 @@ The auditor treats transcripts and declarations as untrusted data. It trusts its
 
 Duplicate keys and numeric rounding could hide declaration changes. Strict parsing, exact Decimal values, separate artifact serialization and recomputed digests address that boundary. A preflight depth limit protects the recursive parser; bounded bytes, nodes and strings limit retained input. Snapshot and receipt output must satisfy their own parser limits as well as their byte limits.
 
-Descriptions can contain instructions, HTML, terminal escapes or bidi markers. Their contents remain in the digest and structural diff. The JSON artifact escapes controls and bidi characters. HTML presentation must use textContent or equivalent escaping and visibly mark decoded controls. It must not fetch icons or turn declaration URLs into automatic requests. A high textual-change finding signals a need for review, not a diagnosis that prompt injection has occurred.
+Descriptions can contain instructions, HTML, terminal escapes or bidi markers. Their contents remain in the digest and structural diff. The JSON artifact escapes controls, bidi characters and invisible format characters such as zero-width and Unicode tag characters, which can carry hidden text. HTML presentation must use textContent or equivalent escaping and visibly mark decoded controls. It must not fetch icons or turn declaration URLs into automatic requests. A high textual-change finding signals a need for review, not a diagnosis that prompt injection has occurred.
 
 Schemas may contain file/HTTPS references, expensive regular expressions or unknown keywords. These are never resolved, opened, compiled or executed. Unsupported schemas remain visible with unknown analysis, even if unchanged.
 
