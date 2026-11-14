@@ -1,8 +1,11 @@
 """Regressions for declarations shaped by a hostile server, within the documented bounds."""
+import subprocess
+import sys
 import time
 import unittest
 from mcp_auditor.audit import audit
-from mcp_auditor.strict_json import artifact_json
+from mcp_auditor.demo import _capture, Clock
+from mcp_auditor.strict_json import artifact_json, AuditError
 from mcp_auditor.snapshot import import_transcript
 from test_protocol import transcript, tool
 
@@ -24,6 +27,32 @@ class HostileServerTests(unittest.TestCase):
         elapsed = time.monotonic() - started
         self.assertEqual(report['summary']['severity']['unknown'], 20000)
         self.assertLess(elapsed, 3.0)
+
+    def test_drain_after_final_page_stays_inside_capture_window(self):
+        # The final page arrives late, then the server keeps its pipes open.
+        # The one-second exit grace must not extend the whole capture window.
+        code = (
+            "import json,sys,time\n"
+            "line=sys.stdin.buffer.readline();request=json.loads(line);time.sleep(0.2)\n"
+            "result={'resultType':'complete','tools':[],'ttlMs':0,'cacheScope':'private'}\n"
+            "sys.stdout.buffer.write(json.dumps({'jsonrpc':'2.0','id':request['id'],'result':result}).encode()+b'\\n')\n"
+            "sys.stdout.flush();time.sleep(10)\n"
+        )
+        process = subprocess.Popen(
+            [sys.executable, '-I', '-B', '-c', code],
+            stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            env={},
+        )
+        started = time.monotonic()
+        with self.assertRaises(AuditError) as caught:
+            _capture(process, Clock(), response_seconds=3, collection_seconds=0.6, started=started)
+        elapsed = time.monotonic() - started
+        self.assertEqual(caught.exception.code, 'capture_timeout')
+        self.assertIsNotNone(process.poll())
+        # Window 0.6 s plus SIGTERM of a sleeping child; the old code took about 1.2 s.
+        self.assertLess(elapsed, 0.95)
 
 
 if __name__ == '__main__':
