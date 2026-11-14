@@ -1,11 +1,16 @@
 """Regressions for declarations shaped by a hostile server, within the documented bounds."""
+import contextlib
+import io
+from pathlib import Path
 import subprocess
 import sys
+import tempfile
 import time
 import unittest
 from mcp_auditor.audit import audit
+from mcp_auditor.cli import main
 from mcp_auditor.demo import _capture, Clock
-from mcp_auditor.strict_json import artifact_json, AuditError
+from mcp_auditor.strict_json import artifact_json, parse_json, AuditError
 from mcp_auditor.snapshot import import_transcript
 from test_protocol import transcript, tool
 
@@ -53,6 +58,30 @@ class HostileServerTests(unittest.TestCase):
         self.assertIsNotNone(process.poll())
         # Window 0.6 s plus SIGTERM of a sleeping child; the old code took about 1.2 s.
         self.assertLess(elapsed, 0.95)
+
+    def test_non_ascii_description_on_non_utf8_stdout_keeps_exit_contract(self):
+        # A console or redirect in a legacy encoding (cp1252, ascii) used to raise
+        # UnicodeEncodeError: a traceback with exit 1, which reads as "needs review".
+        old = tool('lookup')
+        new = tool('lookup')
+        new['description'] = 'Zażółć → 漢字'
+        with tempfile.TemporaryDirectory() as directory:
+            paths = []
+            for name, item in (('old.json', old), ('new.json', new)):
+                path = Path(directory) / name
+                path.write_bytes(artifact_json(transcript([item])))
+                paths.append(str(path))
+            for extra, expected in (([], 0), (['--json'], 0), (['--strict'], 1)):
+                with self.subTest(extra=extra):
+                    raw = io.BytesIO()
+                    stdout = io.TextIOWrapper(raw, encoding='ascii', errors='strict')
+                    with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(io.StringIO()):
+                        code = main(['compare', *paths, *extra])
+                        stdout.flush()
+                    self.assertEqual(code, expected)
+                    if extra == ['--json']:
+                        report = parse_json(raw.getvalue())
+                        self.assertIn('Zażółć', report['changes'][0]['after']['value'])
 
 
 if __name__ == '__main__':

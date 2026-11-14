@@ -92,7 +92,15 @@ def main(argv=None):
         encoded = emit(value, limit, roundtrip)
         if getattr(args, 'out', None):
             write_file(args.out, encoded, args.force)
-        sys.stdout.write(encoded.decode('utf-8') if args.json else text)
+        data = encoded if args.json else text.encode('utf-8')
+        # Write UTF-8 bytes: a legacy console encoding must not turn output into a traceback (exit 1).
+        binary = getattr(sys.stdout, 'buffer', None)
+        if binary is None:
+            sys.stdout.write(data.decode('utf-8'))
+        else:
+            sys.stdout.flush()
+            binary.write(data)
+            binary.flush()
         return code
     except AuditError as exc:
         print(exc.code, file=sys.stderr)
